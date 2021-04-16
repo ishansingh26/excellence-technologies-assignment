@@ -85,13 +85,13 @@ var obj = {
  “id” : 6, “name” : “abc5”
 }
 is converted to something like this,
-var obj = [
- {“id” : 4, “name” : “abc”},
- {“id” : 10, “name” : “ab2”},
- {“id” : 5, “name” : “abc3”},
- {“id” : 6, “name” : “abc5"}
+var arrayofobject = [
+ {'id' : 4, 'name' : 'abc'},
+ {'id' : 10, 'name' : 'ab2'},
+ {'id' : 5, 'name' : 'abc3'},
+ {'id' : 6, 'name' : 'abc5'}
 ]
-Then sorting could be done with 'id' like this,
+//Then sorting could be done with 'id' like this,
 
 function compare( a, b ) {
   if ( a.id < b.id ){
@@ -102,11 +102,9 @@ function compare( a, b ) {
   }
   return 0;
 }
-
-
-array.sort(function (a, b) {
+arrayofobject.sort(function (a, b) {
     return compare(a,b)
 });
 
-document.write(JSON.stringify(array)) //Output: [{"id":4,"name":"abc"},{"id":5,"name":"abc3"},{"id":6,"name":"abc5"},{"id":10,"name":"ab2"}]
+document.write(JSON.stringify(arrayofobject))  //Output: [{"id":4,"name":"abc"},{"id":5,"name":"abc3"},{"id":6,"name":"abc5"},{"id":10,"name":"ab2"}]
 
