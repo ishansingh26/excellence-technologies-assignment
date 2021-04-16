@@ -1,1 +1,112 @@
+//Solution to Question 1: Print even numbers
+
+function printEven(){
+var arr=[0,1,2,3,4,5,7,6,8,11,10,13], i, j;
+for(i=0;i<arr.length-1;i++){
+  if(i==0) 
+      continue;
+  if(arr[i]%2===0)
+      document.write(arr[i]+"<br/>");
+ } 
+}
+
+printEven();
+
+
+
+//Solution to Question 2: Print largest consecutive binary 1's
+
+function largestConsecutive() {
+var arr=[0,1,1,1,0,1,1,0,1,1,1,0,0,0,1,0,1,1,1,1,0,1], count=0, max_occurrence=0;
+for(i=0;i<arr.length-1;i++){
+  if(arr[i]==0) 
+     count = 0;
+  else 
+     count++;
+  if(count > max_occurrence) 
+     max_occurrence = count;
+}
+document.write(`Maximum Consecutive 1's in an array is: ${max_occurrence}`);
+}
+
+largestConsecutive();
+
+
+
+//Solution to Question 3: Print only duplicate number in an array of 101 integers
+
+function printDuplicate() {
+  var arr = [0, 1, 2, 3, 4, 5, 6, 7, 7, 8, 9, 10, 11], // **Here, I have assumed the array to contain integers upto 11, but this code also works for integers upto 100
+    start = 0,
+    end = arr.length - 1;
+  while (start < end) {
+    if (arr[start] === arr[start + 1]) {
+      document.write(`The duplicate element is ${arr[start]}`);
+      return arr[start];
+    }
+    start++;
+  }
+}
+
+printDuplicate();
+
+
+
+//Solution to Question 4: Sample code for GET API call
+
+$(document).ready(function() {
+  $.ajax({
+    url: "http://www.example.com/api/get/1",
+    type: "GET",
+    success: function(result) {
+      document.write(result);
+    },
+    error: function(error) {
+      document.write(error);
+    }
+  });
+});
+
+
+
+//Solution to Question 5: Sort the object by id
+
+1. I had some doubts regarding this question, at first I thought the question should have been in the form of Array of Objects
+to be sorted by a specific key (since each object structure seems a logical pair of id, name to me).
+2. Secondly, when I looked it as a plain dictionary, then I thought it could be done with any sorting algorithm like merge sort.
+But I was not sure.
+3. Finally, I tried converting this structure to an Array of Objects to get the sorting done.
+
+Assume this object,
+var obj = {
+ “id” : 4, “name” : “abc”,
+ “id” : 10, “name” : “ab2”,
+ “id” : 5, “name” : “abc3”,
+ “id” : 6, “name” : “abc5”
+}
+is converted to something like this,
+var obj = [
+ {“id” : 4, “name” : “abc”},
+ {“id” : 10, “name” : “ab2”},
+ {“id” : 5, “name” : “abc3”},
+ {“id” : 6, “name” : “abc5"}
+]
+Then sorting could be done with 'id' like this,
+
+function compare( a, b ) {
+  if ( a.id < b.id ){
+    return -1;
+  }
+  if ( a.id > b.id ){
+    return 1;
+  }
+  return 0;
+}
+
+
+array.sort(function (a, b) {
+    return compare(a,b)
+});
+
+document.write(JSON.stringify(array)) //Output: [{"id":4,"name":"abc"},{"id":5,"name":"abc3"},{"id":6,"name":"abc5"},{"id":10,"name":"ab2"}]
 
